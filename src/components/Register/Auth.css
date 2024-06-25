@@ -1,0 +1,37 @@
+.auth-container {
+    width: 500px; /* Increased width */
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #add8e6; /* LightBlue color */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f0f8ff; /* AliceBlue color */
+}
+.auth-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000080; /* Navy color */
+}
+
+.auth-container input[type="text"],
+.auth-container input[type="password"] {
+    width: 100%; /* Adjust this value as needed */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #add8e6; /* LightBlue color */
+    border-radius: 5px;
+}
+
+.auth-container button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1e90ff; /* DodgerBlue color */
+    color: white;
+    cursor: pointer;
+}
+
+.auth-container button:hover {
+    background-color: #187bcd; /* Slightly darker blue */
+}
