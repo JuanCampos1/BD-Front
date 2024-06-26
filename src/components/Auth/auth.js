@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 export function checkAdmin() {
     if(!localStorage.getItem('token')) return Promise.resolve(false);
-    return fetch('http://localhost:8080/api/admin/isAdmin', {
+    return fetch('http://localhost:8081/api/admin/isAdmin', {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }

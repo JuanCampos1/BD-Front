@@ -15,11 +15,11 @@ function Register() {
   const [carrera, setCarrera] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/equipo')
+    fetch('http://localhost:8081/api/equipo')
       .then(response => response.json())
       .then(data => setEquipos(data));
 
-    fetch('http://localhost:8080/api/carrera')
+    fetch('http://localhost:8081/api/carrera')
       .then(response => response.json())
       .then(data => setCarreras(data));
   }, []);
@@ -40,6 +40,7 @@ function Register() {
     const verifier = (10 - M) % 10;
     return verifier === parseInt(cleanedCI[7]);
   };
+<<<<<<< Updated upstream
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -69,6 +70,20 @@ function Register() {
     })
       .then(response => response.json())
       .then(data => {
+=======
+  console.log(requestBody);
+  // Make a POST request to the backend
+  fetch('http://localhost:8081/api/alumnos/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(requestBody),
+  })
+    .then(response => response.json())
+    .then(data => {
+      // Handle the response from the server
+>>>>>>> Stashed changes
         console.log('Success:', data);
         if (data.token) {
           localStorage.setItem('token', data.token);

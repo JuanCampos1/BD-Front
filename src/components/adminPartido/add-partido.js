@@ -14,7 +14,7 @@ function AdminAddPartido() {
 
     function handleMakePartido(event) {
         event.preventDefault();
-        fetch('http://localhost:8080/api/partido/add', {
+        fetch('http://localhost:8081/api/partido/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ function AdminAddPartido() {
     }, [navigate]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/equipo')
+        fetch('http://localhost:8081/api/equipo')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Error en la respuesta de la red');
@@ -58,7 +58,7 @@ function AdminAddPartido() {
             .then(data => setEquipos(data))
             .catch(error => console.error('Error al cargar los equipos:', error));
 
-        fetch('http://localhost:8080/api/estadio')
+        fetch('http://localhost:8081/api/estadio')
             .then(response => response.json())
             .then(data => {
                 const estadioMap = data.reduce((map, estadio) => ({ ...map, [estadio.id]: estadio }), {});

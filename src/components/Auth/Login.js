@@ -79,7 +79,7 @@ function Login() {
 }
 
 function loginUser(requestBody) {
-  return fetch('http://localhost:8080/api/alumnos/login', {
+  return fetch('http://localhost:8081/api/alumnos/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ function loginUser(requestBody) {
 }
 
 function loginAdmin(requestBody) {
-  return fetch('http://localhost:8080/api/admin/login', {
+  return fetch('http://localhost:8081/api/admin/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
