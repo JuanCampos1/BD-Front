@@ -10,9 +10,10 @@ import { withAdminCheck } from './components/Auth/auth';
 import Ranking from './components/Ranking/Ranking';
 import MostrarPredicciones from './components/ShowPredictions/ShowPredictions';
 import FinalUpdate from './components/FinalUpdate/FinalUpdate';
+import AdminAddPartido from './components/adminPartido/add-partido.js';
 
 const AdminPartidoWithAdminCheck = withAdminCheck(AdminPartido);
-
+const AdminAddPartidoWithAdminCheck = withAdminCheck(AdminAddPartido);
 
 export default function App() {
   console.log("asdasdads", Login);
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/fixture" element={<Fixture/>}/>
         <Route path="/prediction" element={<Prediction/>}/>
         <Route path="/admin/partido" element={<AdminPartidoWithAdminCheck/>}/>
+        <Route path="/admin/partido/add" element={<AdminAddPartidoWithAdminCheck/>}/>
         <Route path="/ranking" element={<Ranking/>}/>
         <Route path="/showpredictions" element={<MostrarPredicciones/>}/>
         <Route path="/admin/update/final" element={<FinalUpdate/>}/>
