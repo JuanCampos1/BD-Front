@@ -17,7 +17,7 @@ function Prediction() {
     }, [navigate]);
 
     useEffect(() => {
-        fetch('http://localhost:8081/api/partido')
+        fetch('http://localhost:8080/api/partido')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Error en la respuesta de la red');
@@ -27,7 +27,7 @@ function Prediction() {
             .then(data => setPartidos(data))
             .catch(error => console.error('Error al cargar los partidos:', error));
 
-        fetch('http://localhost:8081/api/estadio')
+        fetch('http://localhost:8080/api/estadio')
             .then(response => response.json())
             .then(data => {
                 const estadioMap = data.reduce((map, estadio) => ({ ...map, [estadio.id]: estadio }), {});
@@ -147,7 +147,7 @@ function toLocalISOString(date) {
 }
 
 function makePrediction(eqLoc, eqVis, golesLoc, golesVis, fechaHora) {
-    fetch('http://localhost:8081/api/prediccion/add', {
+    fetch('http://localhost:8080/api/prediccion/add', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -173,7 +173,7 @@ function makePrediction(eqLoc, eqVis, golesLoc, golesVis, fechaHora) {
 }
 
 function updatePrediction(eqLoc, eqVis, golesLoc, golesVis, fechaHora) {
-    fetch('http://localhost:8081/api/prediccion/update', {
+    fetch('http://localhost:8080/api/prediccion/update', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

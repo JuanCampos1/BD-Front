@@ -8,7 +8,7 @@ function Fixture() {
   const userNavigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:8081/api/partido')
+    fetch('http://localhost:8080/api/partido')
       .then(response => {
         if (!response.ok) {
           throw new Error('Error en la respuesta de la red');
@@ -18,7 +18,7 @@ function Fixture() {
       .then(data => setPartidos(data))
       .catch(error => console.error('Error al cargar los partidos:', error));
 
-    fetch('http://localhost:8081/api/estadio')
+    fetch('http://localhost:8080/api/estadio')
     .then(response => response.json())
      .then(data => {
        const estadioMap = data.reduce((map, estadio) => ({ ...map, [estadio.id]: estadio }), {});

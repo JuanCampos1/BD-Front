@@ -8,7 +8,7 @@ function Ranking() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:8081/api/alumnos/leaderboard')
+    fetch('http://localhost:8080/api/alumnos/leaderboard')
       .then(response => {
         if (!response.ok) {
           throw new Error('Error en la respuesta de la red');
@@ -20,7 +20,7 @@ function Ranking() {
       })
       .catch(error => console.error('Error:', error));
 
-    fetch('http://localhost:8081/api/carrera')
+    fetch('http://localhost:8080/api/carrera')
       .then(response => response.json())
       .then(data => {
         const carrerasMap = data.reduce((map, carrera) => ({ ...map, [carrera.id]: carrera.nombre }), {});

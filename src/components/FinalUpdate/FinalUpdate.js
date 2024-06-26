@@ -9,7 +9,7 @@ const FinalUpdate = () => {
   const userNavigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:8081/api/equipo')
+    fetch('http://localhost:8080/api/equipo')
       .then(response => response.json())
       .then(data => setEquipos(data))
       .catch(error => console.error('Error fetching teams:', error));
@@ -18,7 +18,7 @@ const FinalUpdate = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('http://localhost:8081/api/prediccion/update/final', {
+      const response = await fetch('http://localhost:8080/api/prediccion/update/final', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

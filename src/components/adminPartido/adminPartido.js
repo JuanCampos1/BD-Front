@@ -22,7 +22,7 @@ function AdminPartido() {
     }, [navigate]);
 
     useEffect(() => {
-        fetch('http://localhost:8081/api/partido')
+        fetch('http://localhost:8080/api/partido')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Error en la respuesta de la red');
@@ -32,7 +32,7 @@ function AdminPartido() {
             .then(data => setPartidos(data))
             .catch(error => console.error('Error al cargar los partidos:', error));
 
-        fetch('http://localhost:8081/api/estadio')
+        fetch('http://localhost:8080/api/estadio')
             .then(response => response.json())
             .then(data => {
                 const estadioMap = data.reduce((map, estadio) => ({ ...map, [estadio.id]: estadio }), {});
@@ -130,7 +130,7 @@ function AdminPartido() {
 }
 
 function updatePartido(eqLoc, eqVis, golesLoc, golesVis, fechaHora) {
-    fetch('http://localhost:8081/api/partido/update', {
+    fetch('http://localhost:8080/api/partido/update', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

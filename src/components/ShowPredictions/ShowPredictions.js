@@ -13,7 +13,7 @@ function ShowPredictions() {
             return;
         }
 
-        fetch('http://localhost:8081/api/prediccion', {
+        fetch('http://localhost:8080/api/prediccion', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
