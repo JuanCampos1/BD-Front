@@ -3,6 +3,7 @@ import './Fixture.css';
 
 function Fixture() {
   const [partidos, setPartidos] = useState([]);
+  const [estadios, setEstadios] = useState({});
 
   useEffect(() => {
     fetch('http://localhost:8080/api/partido')
@@ -24,7 +25,7 @@ function Fixture() {
      .catch(error => console.error('Error:', error));
   }, []);
 
-  const [estadios, setEstadios] = useState({});
+
 
 
   return (
@@ -58,7 +59,7 @@ function Fixture() {
           </table>
         </section>
         <div className="buttons">
-          <button type="button" onClick={() => window.location.href = 'index.html'}>Volver</button>
+          <button type="button" onClick={() => window.location.href = 'main'}>Volver</button>
         </div>
       </main>
       <footer>

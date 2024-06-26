@@ -119,7 +119,7 @@ function Prediction() {
                     </table>
                 </section>
                 <div className="buttons">
-                    <button type="button" onClick={() => window.location.href = 'index.html'}>Volver</button>
+                    <button type="button" onClick={() => window.location.href = 'main'}>Volver</button>
                 </div>
             </main>
             <footer>
