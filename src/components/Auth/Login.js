@@ -15,43 +15,33 @@ function Login() {
     }
   }, [userNavigate]);
 
- const handleSubmit = event => {
-  event.preventDefault();
-
-  // Create an object representing the request body
-  const requestBody = {
-    ci: ci,
-    contraseña: password,
-  };
-
-  // Make a POST request to the backend
-  fetch('http://localhost:8080/api/alumnos/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(requestBody),
-  })
-    .then(response => {
-      if (response.status !== 200) {
-        throw new Error('Invalid credentials');
-      }
-      return response.json();
-    })
-    .then(data => {
-      // Handle the response from the server
-        console.log('Success:', data);
-        if (data.token) {
-            localStorage.setItem('token', data.token);
-            userNavigate('/main');
+  const handleSubmit = async event => {
+    event.preventDefault();
+  
+    const requestBody = {
+      ci: ci,
+      contraseña: password,
+    };
+  
+    try {
+      const userResponse = await loginUser(requestBody);
+      if (userResponse?.token) {
+        localStorage.setItem('token', userResponse.token);
+        userNavigate('/fixture');
+        return;
+      } else {
+        const adminResponse = await loginAdmin(requestBody);
+        if (adminResponse?.token) {
+          localStorage.setItem('token', adminResponse.token);
+          userNavigate('/fixture');
+          return;
         }
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-      alert("Invalid credentials")
-    });
-};
-
+        alert('Invalid credentials');
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
   const formStyle = {
     display: 'flex',
     flexDirection: 'column',
@@ -86,6 +76,46 @@ function Login() {
       </form>
     </div>
   );
+}
+
+function loginUser(requestBody) {
+  return fetch('http://localhost:8080/api/alumnos/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(requestBody),
+  }).then(response => {
+      if (response.status !== 200) {
+        throw new Error('Invalid credentials');
+      }
+      return response.json();
+    }).then(data => {
+        console.log('Success:', data);
+        return data;
+    }).catch((error) => {
+      console.error('Error:', error);
+    });
+}
+
+function loginAdmin(requestBody) {
+  return fetch('http://localhost:8080/api/admin/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(requestBody),
+  }).then(response => {
+      if (response.status !== 200) {
+        throw new Error('Invalid credentials');
+      }
+      return response.json();
+    }).then(data => {
+        console.log('Success:', data);
+        return data;
+    }).catch((error) => {
+      console.error('Error:', error);
+    });
 }
 
 export default Login;
