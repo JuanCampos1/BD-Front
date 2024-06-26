@@ -26,7 +26,6 @@ function Register() {
 
  const handleSubmit = event => {
   event.preventDefault();
-
   const requestBody = {
     ci: ci,
     nombre: nombre,
@@ -35,7 +34,7 @@ function Register() {
     contraseña: password,
     carrera: carrera,
   };
-
+  console.log(requestBody);
   // Make a POST request to the backend
   fetch('http://localhost:8080/api/alumnos/register', {
     method: 'POST',
@@ -94,6 +93,7 @@ function Register() {
         <label>
         Selecciona tu Equipo Campeon:
         <select name="eqCampeon" value={eqCampeon.nombre} onChange={e => setEqCampeon(e.target.value)}>
+            <option value="">Seleccionar</option>
             {equipos.map((equipo, index) => (
                 <option key={index} value={equipo.id}>
                     {equipo.nombre}
@@ -105,6 +105,7 @@ function Register() {
       <label>
         Selecciona tu Equipo Subcampeon:
         <select name="eqsubcampeon" value={eqSubcampeon.nombre} onChange={e => setEqSubCampeon(e.target.value)}>
+          <option value="">Seleccionar</option>
           {equipos.map((equipo, index) => (
             <option key={index} value={equipo.nombre}>
               {equipo.nombre}
@@ -116,6 +117,7 @@ function Register() {
       <label>
         Selecciona tu Carrera:
         <select name="carrera" value={carrera.id} onChange={e => setCarrera(e.target.value)}>
+          <option value="">Seleccionar</option>
           {carreras.map((carrera, index) => (
             <option key={index} value={carrera.id}>
               {carrera.nombre}
@@ -123,7 +125,7 @@ function Register() {
           ))}
         </select>
       </label>
-      <input type="submit" value="Register" style={inputStyle} />
+      <input type="submit" value="Register" style={inputStyle} disabled={!eqCampeon|| !eqSubcampeon || !ci || carrera === '' || password.length < 7} />
       <p>Already have an account? <Link to="/">Log In</Link></p>
       </form>
     </div>
