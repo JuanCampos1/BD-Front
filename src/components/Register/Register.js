@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './Auth.css';
@@ -11,7 +11,7 @@ function Register() {
   const [carreras, setCarreras] = useState([]);
   const [nombre, setNombre] = useState('');
   const [eqCampeon, setEqCampeon] = useState('');
-  const [eqSubcampeon, setEqSubCampeon] = useState('');
+  const [eqSubCampeon, setEqSubCampeon] = useState('');
   const [carrera, setCarrera] = useState('');
 
   useEffect(() => {
@@ -24,38 +24,61 @@ function Register() {
       .then(data => setCarreras(data));
   }, []);
 
- const handleSubmit = event => {
-  event.preventDefault();
-  const requestBody = {
-    ci: ci,
-    nombre: nombre,
-    eqcampeon: eqCampeon,
-    eqsubcampeon: eqSubcampeon,
-    contraseña: password,
-    carrera: carrera,
+  const validateCI = (ci) => {
+    // Remove the dash
+    const cleanedCI = ci.replace('-', '');
+    if (cleanedCI.length !== 8) return false;
+
+    const base = [2, 9, 8, 7, 6, 3, 4];
+    let sum = 0;
+
+    for (let i = 0; i < base.length; i++) {
+      sum += parseInt(cleanedCI[i]) * base[i];
+    }
+
+    const M = sum % 10;
+    const verifier = (10 - M) % 10;
+    return verifier === parseInt(cleanedCI[7]);
   };
-  console.log(requestBody);
-  // Make a POST request to the backend
-  fetch('http://localhost:8080/api/alumnos/register', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(requestBody),
-  })
-    .then(response => response.json())
-    .then(data => {
-      // Handle the response from the server
+
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    if (!validateCI(ci)) {
+      alert('La cédula no es válida');
+      return;
+    }
+
+    const requestBody = {
+      ci: ci,
+      nombre: nombre,
+      eqcampeon: eqCampeon,
+      eqsubcampeon: eqSubCampeon,
+      contraseña: password,
+      carrera: carrera,
+    };
+
+    console.log(requestBody);
+
+    fetch('http://localhost:8080/api/alumnos/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(requestBody),
+    })
+      .then(response => response.json())
+      .then(data => {
         console.log('Success:', data);
         if (data.token) {
-            localStorage.setItem('token', data.token);
-            userNavigate('/main');
+          localStorage.setItem('token', data.token);
+          userNavigate('/main');
         }
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
-};
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  };
 
   const formStyle = {
     display: 'flex',
@@ -76,7 +99,7 @@ function Register() {
 
   return (
     <div className='auth-container'>
-      <h1>Universidad Catolica del Uruguay</h1>
+      <h1>Universidad Católica del Uruguay</h1>
       <form onSubmit={handleSubmit} style={formStyle}>
         <label>
           CI:
@@ -88,45 +111,50 @@ function Register() {
         </label>
         <label>
           Ingresa tu Nombre:
-          <input type="nombre" value={nombre} onChange={e => setNombre(e.target.value)} style={inputStyle} />
+          <input type="text" value={nombre} onChange={e => setNombre(e.target.value)} style={inputStyle} />
         </label>
         <label>
-        Selecciona tu Equipo Campeon:
-        <select name="eqCampeon" value={eqCampeon.nombre} onChange={e => setEqCampeon(e.target.value)}>
+          Selecciona tu Equipo Campeón:
+          <select name="eqCampeon" value={eqCampeon} onChange={e => setEqCampeon(e.target.value)} style={inputStyle}>
             <option value="">Seleccionar</option>
             {equipos.map((equipo, index) => (
-                <option key={index} value={equipo.id}>
-                    {equipo.nombre}
-                </option>
+              <option key={index} value={equipo.nombre}>
+                {equipo.nombre}
+              </option>
             ))}
-            </select>
-      </label>
-
-      <label>
-        Selecciona tu Equipo Subcampeon:
-        <select name="eqsubcampeon" value={eqSubcampeon.nombre} onChange={e => setEqSubCampeon(e.target.value)}>
-          <option value="">Seleccionar</option>
-          {equipos.map((equipo, index) => (
-            <option key={index} value={equipo.nombre}>
-              {equipo.nombre}
-            </option>
-          ))}
-        </select>
-      </label>
-
-      <label>
-        Selecciona tu Carrera:
-        <select name="carrera" value={carrera.id} onChange={e => setCarrera(e.target.value)}>
-          <option value="">Seleccionar</option>
-          {carreras.map((carrera, index) => (
-            <option key={index} value={carrera.id}>
-              {carrera.nombre}
-            </option>
-          ))}
-        </select>
-      </label>
-      <input type="submit" value="Register" style={inputStyle} disabled={!eqCampeon|| !eqSubcampeon || !ci || carrera === '' || password.length < 7} />
-      <p>Already have an account? <Link to="/">Log In</Link></p>
+          </select>
+        </label>
+        <label>
+          Selecciona tu Equipo Subcampeón:
+          <select name="eqsubcampeon" value={eqSubCampeon} onChange={e => setEqSubCampeon(e.target.value)} style={inputStyle}>
+            <option value="">Seleccionar</option>
+            {equipos
+              .filter(equipo => equipo.nombre !== eqCampeon)
+              .map((equipo, index) => (
+                <option key={index} value={equipo.nombre}>
+                  {equipo.nombre}
+                </option>
+              ))}
+          </select>
+        </label>
+        <label>
+          Selecciona tu Carrera:
+          <select name="carrera" value={carrera} onChange={e => setCarrera(e.target.value)} style={inputStyle}>
+            <option value="">Seleccionar</option>
+            {carreras.map((carrera, index) => (
+              <option key={index} value={carrera.id}>
+                {carrera.nombre}
+              </option>
+            ))}
+          </select>
+        </label>
+        <input
+          type="submit"
+          value="Register"
+          style={inputStyle}
+          disabled={!eqCampeon || !eqSubCampeon || !ci || carrera === '' || password.length < 7}
+        />
+        <p>Already have an account? <Link to="/">Log In</Link></p>
       </form>
     </div>
   );

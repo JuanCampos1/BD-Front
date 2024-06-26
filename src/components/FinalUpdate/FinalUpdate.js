@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './FinalUpdate.css';
+import { useNavigate } from 'react-router-dom';
 
 const FinalUpdate = () => {
   const [equipos, setEquipos] = useState([]);
   const [eqCampeon, setEqCampeon] = useState('');
   const [eqSubCampeon, setEqSubCampeon] = useState('');
+  const userNavigate = useNavigate();
 
   useEffect(() => {
     fetch('http://localhost:8080/api/equipo')
@@ -78,6 +80,12 @@ const FinalUpdate = () => {
           Actualizar
         </button>
       </form>
+      <div className="buttons">
+          <button type="button" onClick={() => userNavigate('/admin/main')}>Volver</button>
+        </div>
+      <footer>
+        <p>&copy; 2024 Universidad Católica del Uruguay. Todos los derechos reservados.</p>
+      </footer>
     </div>
   );
 };
