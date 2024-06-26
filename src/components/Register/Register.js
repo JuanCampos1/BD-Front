@@ -25,7 +25,6 @@ function Register() {
   }, []);
 
   const validateCI = (ci) => {
-    // Remove the dash
     const cleanedCI = ci.replace('-', '');
     if (cleanedCI.length !== 8) return false;
 
