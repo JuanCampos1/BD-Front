@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro Exitoso</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .mensaje-exito {
+            background-color: #28a745;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 15px; 
+        }
+        .login-link {
+            color: #007bff;
+            text-decoration: none;
+            text-align: center;
+        }
+        .login-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="mensaje-exito">
+        <h1>Registrado con Éxito</h1>
+        <p>¡Tu registro de usuario se ha completado exitosamente!</p>
+    </div>
+    <!-- <a href="index.html" class="login-link">Volver al Inicio</a> -->
+    <button type="submit" id="voler-btn" onclick="window.location.href='index.html'">Volver al Inicio</button>
+</body>
+</html>

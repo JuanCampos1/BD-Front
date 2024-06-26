@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Predicciones por Usuario - Penca UCU</title>
+    <link rel="stylesheet" href="ver-predicciones-styles.css">
+</head>
+<body>
+    <header>
+        <h1>Predicciones por Usuario</h1>
+    </header>
+    <main>
+        <section id="predicciones-usuario">
+            <table class="predicciones-table">
+                <thead>
+                    <tr>
+                        <th>CI</th>
+                        <th>Nombre</th>
+                        <th>Equipo Campeón</th>
+                        <th>Equipo Subcampeón</th>
+                        <th>Carrera</th>
+                        <th>Puntos</th>
+                    </tr>
+                </thead>
+                <tbody id="predicciones-body">
+                    <!-- Las predicciones se cargarán aquí -->
+                </tbody>
+            </table>
+        </section>
+        <div class="buttons">
+            <button type="button" id="volver-btn" onclick="window.location.href='admin.html'">Volver</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Universidad Católica del Uruguay. Todos los derechos reservados.</p>
+    </footer>
+    <script src="ver-predicciones.js"></script>
+</body>
+</html>

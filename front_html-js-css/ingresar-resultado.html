@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresar Resultado de Partidos - Penca UCU</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Ingresar Resultado de Partidos</h1>
+    </header>
+    <main>
+        <section id="resultado-form">
+            <form id="resultadoForm">
+                <label for="fecha">Seleccione Fecha:</label>
+                <input type="date" id="fecha" name="fecha" required>
+
+                <label for="equipo1" id="label-equipo1" style="display:none;">Seleccione Equipo 1:</label>
+                <select id="equipo1" name="equipo1" style="display:none;" required></select>
+
+                <label for="equipo2" id="label-equipo2" style="display:none;">Seleccione Equipo 2:</label>
+                <select id="equipo2" name="equipo2" style="display:none;" required></select>
+
+                <label for="goles-equipo1" id="label-goles-equipo1" style="display:none;">Goles Equipo 1:</label>
+                <select id="goles-equipo1" name="goles-equipo1" style="display:none;" required>
+                    <option value="">Seleccione</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+
+                <label for="goles-equipo2" id="label-goles-equipo2" style="display:none;">Goles Equipo 2:</label>
+                <select id="goles-equipo2" name="goles-equipo2" style="display:none;" required>
+                    <option value="">Seleccione</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+
+                <button type="submit" id="ingresar-resultado-btn" style="display:none;">Ingresar Resultado</button>
+                <button type="button" id="volver-btn" onclick="window.location.href='admin.html'">Volver</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Universidad Católica del Uruguay. Todos los derechos reservados.</p>
+    </footer>
+    <script src="ingresar-resultado.js"></script>
+</body>
+</html>

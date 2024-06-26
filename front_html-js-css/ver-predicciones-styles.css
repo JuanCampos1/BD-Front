@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    width: 100%;
+}
+
+main {
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#predicciones-usuario {
+    width: 100%;
+    max-width: 1200px;
+    margin: 2em 0;
+    background-color: white;
+    padding: 1em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.predicciones-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.predicciones-table th, .predicciones-table td {
+    border: 1px solid #ddd;
+    padding: 0.8em;
+    text-align: center;
+}
+
+.predicciones-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.predicciones-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.buttons {
+    margin-top: 1em;
+    display: flex;
+    gap: 1em;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#volver-btn {
+    background-color: #24e94f;
+    color: white;
+}
+
+#ingresar-resultado-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}

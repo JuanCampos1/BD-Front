@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Alumno - Penca UCU</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Registro de Alumno</h1>
+    </header>
+    <main>
+        <section id="registro-form">
+            <form id="registroForm">
+                <label for="ci">Cédula de Identidad:</label>
+                <input type="text" id="ci" name="ci" required>
+
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="eqcampeon">Equipo Campeón:</label>
+                <input type="text" id="eqcampeon" name="eqcampeon" required>
+
+                <label for="eqsubcampeon">Equipo Subcampeón:</label>
+                <input type="text" id="eqsubcampeon" name="eqsubcampeon" required>
+
+                <label for="carrera">Carrera:</label>
+                <input type="text" id="carrera" name="carrera" required>
+
+                <label for="contraseña">Contraseña:</label>
+                <input type="password" id="contraseña" name="contraseña" required>
+
+                <button type="submit" id="registrar-btn">Registrar</button>
+                <button type="button" id="volver-btn" onclick="window.location.href='index.html'">Volver</button>
+            </form>
+        </section>
+    </main>
+    <script src="registro.js"></script>
+</body>
+</html>
