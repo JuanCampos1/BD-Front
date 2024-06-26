@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './ShowPredictions.css';
 
 function ShowPredictions() {
     const [predicciones, setPredicciones] = useState([]);
-    const token = localStorage.getItem('token'); 
+    const token = localStorage.getItem('token');
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (!token) {
@@ -55,6 +57,7 @@ function ShowPredictions() {
                     </tbody>
                 </table>
             )}
+            <button type="button" onClick={() => navigate("/main")}>Volver</button>
         </div>
     );
 }

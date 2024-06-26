@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Fixture.css';
 
 function Fixture() {
   const [partidos, setPartidos] = useState([]);
   const [estadios, setEstadios] = useState({});
+  const userNavigate = useNavigate();
 
   useEffect(() => {
     fetch('http://localhost:8080/api/partido')
@@ -59,7 +61,7 @@ function Fixture() {
           </table>
         </section>
         <div className="buttons">
-          <button type="button" onClick={() => window.location.href = 'main'}>Volver</button>
+          <button type="button" onClick={() => userNavigate('/admin/main')}>Volver</button>
         </div>
       </main>
       <footer>

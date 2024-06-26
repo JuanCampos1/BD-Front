@@ -27,13 +27,13 @@ function Login() {
       const userResponse = await loginUser(requestBody);
       if (userResponse?.token) {
         localStorage.setItem('token', userResponse.token);
-        userNavigate('/fixture');
+        userNavigate('/main');
         return;
       } else {
         const adminResponse = await loginAdmin(requestBody);
         if (adminResponse?.token) {
           localStorage.setItem('token', adminResponse.token);
-          userNavigate('/fixture');
+          userNavigate('/admin/main');
           return;
         }
         alert('Invalid credentials');

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Ranking.css';
 
 function Ranking() {
   const [rankings, setRankings] = useState([]);
   const [carreras, setCarreras] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch('http://localhost:8080/api/alumnos/leaderboard')
@@ -56,6 +58,9 @@ function Ranking() {
           )}
         </tbody>
       </table>
+      <div className="buttons">
+        <button type="button" onClick={() => navigate("/admin/main")}>Volver</button>
+      </div>
     </div>
   );
 }

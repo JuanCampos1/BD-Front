@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './FinalUpdate.css'; // Asegúrate de importar el archivo CSS
+import './FinalUpdate.css';
 
 const FinalUpdate = () => {
   const [equipos, setEquipos] = useState([]);

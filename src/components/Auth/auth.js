@@ -29,7 +29,7 @@ export function withAdminCheck(WrappedComponent) {
 
     useEffect(() => {
       if (isAdmin === false) {
-        userNavigate('/fixture');
+        userNavigate('/main');
       }
     }, [isAdmin, userNavigate]);
 

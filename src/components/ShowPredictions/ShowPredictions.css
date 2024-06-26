@@ -50,6 +50,10 @@ main {
     color: white;
 }
 
+button {
+    width: 200px; /* Adjust as needed */
+}
+
 footer {
     background-color: #4CAF50;
     color: white;

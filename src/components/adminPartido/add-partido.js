@@ -134,7 +134,7 @@ function AdminAddPartido() {
                 </section>
                 <div className="buttons">
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
-                        <button type="button" className="addPartidoButton" onClick={() => window.location.href = 'index.html'}>Volver</button>
+                        <button type="button" className="addPartidoButton" onClick={() => navigate('/admin/main')}>Volver</button>
                     </div>
                 </div>
             </main>
