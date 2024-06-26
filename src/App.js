@@ -4,6 +4,7 @@ import Login from './components/Auth/Login'
 import MainPage from './components/MainPage/Main-page'
 import Register from './components/Register/Register'
 import Fixture from './components/Fixture/Fixture';
+import Prediction from './components/Predictions/Predictions';
 
 export default function App() {
   console.log("asdasdads", Login);
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/main" element={<MainPage/>} />
         <Route path="/register" element={<Register/>} />
         <Route path="/fixture" element={<Fixture/>}/>
+        <Route path="/prediction" element={<Prediction/>}/>
       </Routes>
     </BrowserRouter>
   );

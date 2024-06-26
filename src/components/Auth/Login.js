@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './Auth.css';
@@ -7,6 +7,13 @@ function Login() {
   const userNavigate = useNavigate();
   const [ci, setCi] = useState('');
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      userNavigate('/fixture');
+    }
+  }, [userNavigate]);
 
  const handleSubmit = event => {
   event.preventDefault();
@@ -25,7 +32,12 @@ function Login() {
     },
     body: JSON.stringify(requestBody),
   })
-    .then(response => response.json())
+    .then(response => {
+      if (response.status !== 200) {
+        throw new Error('Invalid credentials');
+      }
+      return response.json();
+    })
     .then(data => {
       // Handle the response from the server
         console.log('Success:', data);
@@ -36,6 +48,7 @@ function Login() {
     })
     .catch((error) => {
       console.error('Error:', error);
+      alert("Invalid credentials")
     });
 };
 
