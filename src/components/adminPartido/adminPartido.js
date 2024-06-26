@@ -44,7 +44,7 @@ function AdminPartido() {
     return (
         <div id="fixture">
             <header>
-                <h1>Escoge el partido en el que deseas hacer una prediccion</h1>
+                <h1>Actualizar Resultados de Partidos</h1>
             </header>
             <main>
                 <section id="fixture">
@@ -56,7 +56,7 @@ function AdminPartido() {
                                 <th>Equipo Visitante</th>
                                 <th>Fecha y Hora</th>
                                 <th>Estadio</th>
-                                <th>Prediccion</th> {/* New column header */}
+                                <th>Ingresar Resultado</th> {/* New column header */}
                             </tr>
                         </thead>
                         <tbody id="fixture-body">
@@ -69,7 +69,7 @@ function AdminPartido() {
                                     <td>{estadios[partido.estadio] ? estadios[partido.estadio].nombre : 'Nombre no encontrado'}</td>
                                     <td>
                                         {
-                                            !partido.golesloc && !partido.golesvis &&
+                                            partido.golesloc === null && partido.golesvis === null &&
                                             <>
                                                 <div>
                                                     <input
